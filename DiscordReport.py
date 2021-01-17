@@ -26,7 +26,7 @@ urllib.urlopen(url)
 @name('report')
 @alias("reportar")
 def report(connection, value, *arg):
-    #Declaration of Constants and Variables
+    #Declaration of Pysnip Constants and Variables
     player = get_player(connection.protocol, value)
     message = join_arguments(arg)
     player_name = player.name
