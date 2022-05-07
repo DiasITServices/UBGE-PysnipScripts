@@ -20,8 +20,8 @@ USER_AGENT = "Mozilla/5.0 (Windows NT 6.1; Win64; x64; rv:47.0) Gecko/20100101 F
 WEBHOOK_URL = "WEBHOOK_URL_HERE"
 LANGUAGE = "EN" #PT/EN
 ROLE_MENTION = "<@!ID_NUMBER_HERE>" #Discord role Mention ID (Optional) FORMAT: <@!ID_NUMBER_HERE>
-url = "https://www.example.com"
-urllib.urlopen(url)
+# url = "https://www.example.com"
+# urllib.urlopen(url)
 
 @name('report')
 @alias("reportar")
@@ -57,7 +57,7 @@ def report(connection, value, *arg):
             data = urllib.urlencode({"content": reportmsg})
             post_request = urllib2.Request(url, data)
             post_request.add_header("User-Agent", USER_AGENT)
-            urllib2.urlopen(post_request).read()
+            thread.start_new_thread(urllib2.urlopen(post_request).read())
         except:
             return "A exception has occurred!"
         return 'The report has successfully sended to Staff Team'
@@ -73,6 +73,6 @@ def apply_script(protocol, connection, config):
             data = urllib.urlencode({"content": message})
             post_request = urllib2.Request(url, data)
             post_request.add_header("User-Agent", USER_AGENT)
-            urllib2.urlopen(post_request).read()
+            thread.start_new_thread(urllib2.urlopen(post_request).read())
             return connection.enviar_report
     return protocol, SendReportClass
